@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import candidateGetAllService from '../services/candidateGetAllService';
 import candidateGetAllServiceFetch from '../services/candidateGetAllServiceFetch';
 
-class CandidateList extends Component{
+class CandidateList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -30,17 +30,19 @@ class CandidateList extends Component{
                <h1 className="text-center">
                     Candidate List
                 </h1>
-                <table className="table table-striped">
+                <div className="row">
+                <table className="table table-striped table-borded">
                     <thead>
                         <tr>
-                            <td>Id</td>
-                            <td>Name</td>
-                            <td>Education</td>
-                            <td>Contact</td>
-                            <td>States</td>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Education</th>
+                            <th>Contact</th>
+                            <th>States</th>
                         </tr>
-                        <tbody>
-                            {
+                    </thead>  
+                    <tbody>
+                        {
                             this.state.candidates.map(
                                 candidates =>
                                 <tr key= {candidates.id}>
@@ -51,12 +53,13 @@ class CandidateList extends Component{
                                     <td>{candidates.states}</td>
                                 </tr>
                             )
-                            }
-                        </tbody>
-
-                    </thead>                   
+                        }
+                    </tbody>
+                                     
                 </table>
    
+
+                </div>
             </div>
         )
     }
