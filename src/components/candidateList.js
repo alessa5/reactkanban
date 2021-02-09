@@ -6,31 +6,31 @@ class CandidateList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            //candidates:[]
+            candidates:[]
         };
     }
 
     componentDidMount(){
-//        candidateGetAllService.getAllCandidates()
-//        .then((response)=>{
- //           this.setState({candidates:response.data})
- //       });
+        candidateGetAllService.getAllCandidates()
+        .then((response)=>{
+            this.setState({candidates:response.data})
+       });
     }
-/*
+
     componentDidMount(){
         candidateGetAllServiceFetch.getAllCandidates()
         .then((res)=>{
             this.setState({candidates:res});
         });
-    }*/
+    }
 
     render(){
         return(
-            <div>
-                <h1>
+           <div>
+               <h1 className="text-center">
                     Candidate List
                 </h1>
-                <table>
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <td>Id</td>
@@ -56,6 +56,7 @@ class CandidateList extends React.Component{
 
                     </thead>                   
                 </table>
+   
             </div>
         )
     }
