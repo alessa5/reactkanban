@@ -1,13 +1,15 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+//npimport CandidateList from './components/candidateList';
 
-function App() {
-  return (
-    <div>
+export default App();
 
+function App(){
+  return(
+    <div className="App">
+      
     </div>
-    
   );
 }
 
-export default App;
