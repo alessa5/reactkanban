@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import candidateGetAllService from '../services/candidateGetAllService';
 import candidateGetAllServiceFetch from '../services/candidateGetAllServiceFetch';
 
-class CandidateList extends React.Component{
+class CandidateList extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -16,14 +16,14 @@ class CandidateList extends React.Component{
             this.setState({candidates:response.data})
        });
     }
-
+/*
     componentDidMount(){
         candidateGetAllServiceFetch.getAllCandidates()
         .then((res)=>{
             this.setState({candidates:res});
         });
     }
-
+*/
     render(){
         return(
            <div>
