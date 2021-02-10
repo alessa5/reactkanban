@@ -7,7 +7,8 @@ class CandidateList extends React.Component{
         super(props);
         this.state = {
             candidates:[]
-        };
+        }
+        this.putCandidate = this.putCandidate.bind(this);
     }
 
     componentDidMount(){
@@ -15,6 +16,10 @@ class CandidateList extends React.Component{
         .then((response)=>{
             this.setState({candidates:response.data})
        });
+    }
+
+    putCandidate(){
+        this.props.history.push('/putCandidate');
     }
 /*
     componentDidMount(){
@@ -27,9 +32,10 @@ class CandidateList extends React.Component{
     render(){
         return(
            <div>
-               <h1 className="text-center">
-                    Candidate List
-                </h1>
+               <h1 className="text-center">Candidate List</h1>
+                <div className="row">
+                    <button className="btn btn-primary" onClick={this.putCandidate}>Add Candidate</button>
+                </div>
                 <div className="row">
                 <table className="table table-striped table-borded">
                     <thead>
