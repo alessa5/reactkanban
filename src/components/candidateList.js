@@ -8,7 +8,8 @@ class CandidateList extends React.Component{
         this.state = {
             candidates:[]
         }
-        this.putCandidate = this.putCandidate.bind(this);
+        this.postCandidate = this.postCandidate.bind(this);
+        this.editCandidateStates = this.editCandidateStates.bind(this);
     }
 
     componentDidMount(){
@@ -18,8 +19,12 @@ class CandidateList extends React.Component{
        });
     }
 
-    putCandidate(){
-        this.props.history.push('/putCandidate');
+    postCandidate(){
+        this.props.history.push('/postCandidate');
+    }
+
+    editCandidateStates(){
+        this.props.history.push('/putCandidate')
     }
 /*
     componentDidMount(){
@@ -34,7 +39,7 @@ class CandidateList extends React.Component{
            <div>
                <h1 className="text-center">Candidate List</h1>
                 <div className="row">
-                    <button className="btn btn-primary" onClick={this.putCandidate}>Add Candidate</button>
+                    <button className="btn btn-primary" onClick={this.postCandidate}>Add Candidate</button>
                 </div>
                 <div className="row">
                 <table className="table table-striped table-borded">
@@ -45,6 +50,7 @@ class CandidateList extends React.Component{
                             <th>Education</th>
                             <th>Contact</th>
                             <th>States</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>  
                     <tbody>
@@ -57,6 +63,9 @@ class CandidateList extends React.Component{
                                     <td>{candidates.education}</td>
                                     <td>{candidates.contact}</td>
                                     <td>{candidates.states}</td>
+                                    <td>
+                                        <button onClick={()=>this.editCandidateStates()} className="btn btn-info">Update</button>
+                                    </td>
                                 </tr>
                             )
                         }
