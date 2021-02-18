@@ -20,7 +20,7 @@ function App(){
               <Route path='/' exact component={CandidateList}></Route>
               <Route path='/mainPage' component={CandidateList}></Route>
               <Route path='/postCandidate' component={Createcandidate}></Route>
-              <Route path='/putCandidate' component={Updatecandidate}></Route>
+              <Route path='/putCandidate/:id' component={Updatecandidate}></Route>
           </Switch>
       </div>
       </BrowserRouter> 

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import candidateGetAllService from '../services/candidateGetAllService';
+import candidateService from '../services/candidateService';
 
 class updatecandidate extends Component {
     constructor(props){
         super(props);
         this.state={
-            id:'',
+            id:this.props.match.params.id,
             name:'',
             education:'',
             contact:'',
@@ -20,21 +20,35 @@ class updatecandidate extends Component {
         this.updateCandidate = this.updateCandidate.bind(this);
     }
 
-    putCandidate=(p)=>{
+    componentDidMount(){
+        candidateService.getCandidateById(this.state.id).then((res)=>{
+            let candidate = res.data;
+            this.setState({
+                name:candidate.name,
+                education:candidate.education,
+                contact:candidate.contact,
+                states:candidate.states
+            })
+        });
+
+
+    }
+
+    updateCandidate=(p)=>{
         p.preventDefault();
         let current = {
             id:this.state.id,
             name:this.state.name,
             education:this.state.education,
             contact:this.state.contact,
-            states:"Applied"
+            states:this.state.states
         }
 
-        candidateGetAllService.createCandidate(current).then(res=>{
+        candidateService.updateCandidate(current).then(res=>{
             this.props.history.push('/mainPage');
         });
 
-        console.log("new candidate added");
+        console.log("the candidate info updated!");
 
     }
 
@@ -65,10 +79,7 @@ class updatecandidate extends Component {
                             <h3 className="text-center">Edit Candidate Info</h3>
                             <div className="card-body">
                                 <form>
-                                    <div className="form-group">
-                                        <label>Id: </label>
-                                        <input placeholder="id" name="id" className="form-control" value={this.state.id} onChange={this.changeIdHandler}/>
-                                    </div>
+                                    
                                     <div className="form-group">
                                         <label>Name: </label>
                                         <input placeholder="name" name="name" className="form-control" value={this.state.name} onChange={this.changeNameHandler}/>
@@ -80,6 +91,10 @@ class updatecandidate extends Component {
                                     <div className="form-group">
                                         <label>Contact: </label>
                                         <input placeholder="contact" name="contact" className="form-control" value={this.state.contact} onChange={this.changeContactHandler}/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>States: </label>
+                                        <input placeholder="states" name="states" className="form-control" value={this.state.states} onChange={this.statesContactHandler}/>
                                     </div>
                                     <button className="btn btn-success" onClick={this.updateCandidate}>Submit</button>
                                     <button className="btn btn-danger" onClick={this.changeContactHandler.bind(this)} style={{marginLeft:"10px"}}>Cancel</button>

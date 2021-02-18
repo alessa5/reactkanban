@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import candidateGetAllService from '../services/candidateGetAllService';
+import candidateService from '../services/candidateService';
 
 class createcandidate extends Component {
     constructor(props){
@@ -30,7 +30,7 @@ class createcandidate extends Component {
             states:"Applied"
         }
 
-        candidateGetAllService.createCandidate(current).then(res=>{
+        candidateService.createCandidate(current).then(res=>{
             this.props.history.push('/mainPage');
         });
 

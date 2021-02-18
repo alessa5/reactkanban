@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import candidateGetAllService from '../services/candidateGetAllService';
+import candidateService from '../services/candidateService';
 import candidateGetAllServiceFetch from '../services/candidateGetAllServiceFetch';
 
 class CandidateList extends React.Component{
@@ -13,7 +13,7 @@ class CandidateList extends React.Component{
     }
 
     componentDidMount(){
-        candidateGetAllService.getAllCandidates()
+        candidateService.getAllCandidates()
         .then((response)=>{
             this.setState({candidates:response.data})
        });
@@ -23,8 +23,8 @@ class CandidateList extends React.Component{
         this.props.history.push('/postCandidate');
     }
 
-    editCandidateStates(){
-        this.props.history.push('/putCandidate')
+    editCandidateStates(id){
+        this.props.history.push('/putCandidate/'+id);
     }
 /*
     componentDidMount(){
@@ -64,7 +64,7 @@ class CandidateList extends React.Component{
                                     <td>{candidates.contact}</td>
                                     <td>{candidates.states}</td>
                                     <td>
-                                        <button onClick={()=>this.editCandidateStates()} className="btn btn-info">Update</button>
+                                        <button onClick={()=>this.editCandidateStates(candidates.id)} className="btn btn-info">Update</button>
                                     </td>
                                 </tr>
                             )
