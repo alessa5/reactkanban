@@ -8,6 +8,7 @@ import Createcandidate from './components/createcandidate';
 import Updatecandidate from './components/updatecandidate';
 import Appheader from './components/appheader';
 import Appfooter from './components/appfooter';
+import Viewcandidate from './components/viewcandidate';
 
 
 function App(){
@@ -21,6 +22,7 @@ function App(){
               <Route path='/mainPage' component={CandidateList}></Route>
               <Route path='/postCandidate' component={Createcandidate}></Route>
               <Route path='/putCandidate/:id' component={Updatecandidate}></Route>
+              <Route path='/viewCandidate/:id' component={Viewcandidate}></Route>
           </Switch>
       </div>
       </BrowserRouter> 
