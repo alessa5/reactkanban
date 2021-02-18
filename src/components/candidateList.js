@@ -10,6 +10,15 @@ class CandidateList extends React.Component{
         }
         this.postCandidate = this.postCandidate.bind(this);
         this.editCandidateStates = this.editCandidateStates.bind(this);
+        this.deleteCandidate = this.deleteCandidate.bind(this);
+    }
+
+    deleteCandidate(id){
+        candidateService.deleteCandidate(id).then(res=>{
+            this.setState({candidates:res.data})
+            //this.setState({candidates:this.state.candidates.filter(dec=>dec.id!==id)});
+        });
+        // this.props.history.push('/');
     }
 
     componentDidMount(){
@@ -26,6 +35,8 @@ class CandidateList extends React.Component{
     editCandidateStates(id){
         this.props.history.push('/putCandidate/'+id);
     }
+
+    
 /*
     componentDidMount(){
         candidateGetAllServiceFetch.getAllCandidates()
@@ -65,6 +76,7 @@ class CandidateList extends React.Component{
                                     <td>{candidates.states}</td>
                                     <td>
                                         <button onClick={()=>this.editCandidateStates(candidates.id)} className="btn btn-info">Update</button>
+                                        <button style={{marginLeft:"10px"}} onClick={()=>this.deleteCandidate(candidates.id)} className="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             )
